@@ -17,30 +17,58 @@
             color: #333;
             overflow-x: hidden;
         }
-        /* Theme Toggle Button */
-.theme-toggle {
+        .theme-toggle {
     position: fixed;
-    top: 20px;
+    bottom: 20px;
     right: 20px;
     width: 50px;
     height: 50px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(152, 205, 0, 0.2);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 1100;
+    z-index: 1200;
     transition: all 0.3s ease;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .theme-toggle:hover {
-    transform: rotate(180deg);
+    transform: scale(1.1);
+    background: rgba(152, 205, 0, 0.3);
 }
 
-/* Dark Theme Styles */
+.dark-theme .theme-toggle {
+    background: rgba(216, 64, 64, 0.2);
+    color: white;
+}
+
+.dark-theme .theme-toggle:hover {
+    background: rgba(216, 64, 64, 0.3);
+}
+
+.theme-toggle::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: inherit;
+    border-radius: 50%;
+    opacity: 0.3;
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover::after {
+    opacity: 0.5;
+    transform: scale(1.2);
+}
 body.dark-theme {
-    /* Global Color Variables */
+
     --primary-color: #D84040;
     --primary-color-light: #8E1616;
     --primary-color-box: #1D1616;
@@ -67,30 +95,8 @@ body.dark-theme {
     
 }
 
-.dark-theme .navbar {
-    background: rgba(0, 0, 0, 0.9);
-    color: #EEEEEE;
-}
-
-.dark-theme .navbar .logo {
-    color: white;
-    text-shadow: -1px 0 #ff0000, 0 1px #ff0000, 1px 0 #ff0000, 0 -1px #ff0000;
-}
-
-.dark-theme .nav-link {
-    color: #e0e0e0;
-}
-
-.dark-theme .nav-link:hover {
-    color: var(--primary-color-light);
-}
-
-.dark-theme .nav-link::after {
-    background: var(--primary-color-light);
-}
-
 .dark-theme .hero {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-color-light) 100%);
+    background: linear-gradient(135deg, var(--primary-color-light) 0%, var(--primary-color-box) 100%);
     color: white;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
@@ -109,6 +115,7 @@ body.dark-theme {
 }
 
 .dark-theme .profile-card{
+    box-shadow: 10px 10px 5px var(--primary-color-light);
     background-color: #464545a5;
 }
 .dark-theme .about {
@@ -126,12 +133,14 @@ body.dark-theme {
 .dark-theme .skill-card {
     background: #464545a5;
     transition: all 0.3s ease;
+    
 }
 
 .dark-theme .skill-card:hover {
     background: var(--primary-color-box);
     transform: translateY(-10px);
     color: white;
+    box-shadow: 8px 8px 5px var(--primary-color-light);
 }
 
 .dark-theme .skill-card h4 {
@@ -182,7 +191,17 @@ body.dark-theme {
 
 .dark-theme .portfolio-content {
     background: rgba(30, 30, 30, 0.95);
+
 }
+
+.dark-theme .portfolio-content h4{
+    color: white;
+}
+
+.dark-theme .portfolio-content p{
+    color: white;
+}
+
 
 .dark-theme .portfolio-category {
     color: var(--primary-color-light);
@@ -197,106 +216,51 @@ body.dark-theme {
 }
 
 .dark-theme .contact {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-color-light) 100%);
-    color: white;
+    background: black;
 }
 
 .dark-theme .contact-icon {
-    background: #67dd83;
-    /* border: 5px #121212; */
-    /* box-shadow: 3px 3px 3px 3px black; */
+    background: #8E1616;
 }
 
 .dark-theme .contact-form {
 
-    background: #D84040;
+    background: #8E1616;
     backdrop-filter: blur(10px);
-    /* box-shadow: 5px 5px 30px 30px black; */
 }
 .dark-theme .contact h2 {
-    color: var(--primary-color-box);
+    color: #bc1818;
     
 }
 
+
 .dark-theme .contact .section-subtitle{
-    color: black;
+    color: var(--primary-color);
 }
 
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
+.dark-theme .contact button{
+    background-color: #5b0e0e;
+}
 
-        .navbar.scrolled {
-            /* background: rgba(255, 255, 255, 0.98); */
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
+.dark-theme .contact-info{
+    box-shadow: 2px #FFFADC;
+}
 
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
-            color: #0078ff;
+            color: #98CD00;
             text-decoration: none;
         }
 
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-link:hover {
-            color: #0078ff;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background: #0078ff;
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #FFFADC 0%, #B6F500 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
+            color: rgb(0, 0, 0);
             position: relative;
             overflow: hidden;
         }
@@ -344,7 +308,7 @@ body.dark-theme {
         }
 
         .btn-primary {
-            background: #0078ff;
+            background: #98CD00;
             color: white;
             padding: 12px 30px;
             border: none;
@@ -358,15 +322,14 @@ body.dark-theme {
         }
 
         .btn-primary:hover {
-            background: #0056b3;
+            background: #8dbd08;
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 120, 255, 0.3);
+            box-shadow: 0 10px 30px #98CD00;
         }
 
-        /* About Section */
         .about {
             padding: 100px 0;
-            background: #f8f9fa;
+            background: #FFFADC;
             
         }
 
@@ -402,24 +365,24 @@ body.dark-theme {
         }
 
         .profile-card {
-            background: white;
+            background: #FFFADC;
             padding: 2rem;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            /* text-decoration-color: white; */
+            box-shadow: 0 10px 40px #c8c3a9;
+
         }
 
         .profile-img {
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #FFFADC 0%, #98CD00 100%);
             margin: 0 auto 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
-            color: white;
+            color: #FFFADC;
             font-weight: bold;
         }
 
@@ -443,7 +406,7 @@ body.dark-theme {
         }
 
         .profile-details strong {
-            color: #0078ff;
+            color: #98CD00;
             width: 100px;
             display: inline-block;
         }
@@ -458,9 +421,9 @@ body.dark-theme {
             margin-bottom: 1.5rem;
         }
 
-        /* Skills Section */
         .skills {
             padding: 100px 0;
+            background-color: #FFFADC;
         }
 
         .skills-grid {
@@ -471,22 +434,23 @@ body.dark-theme {
         }
 
         .skill-card {
-            background: white;
+            background: #f6f1d4;
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.208);
             text-align: center;
             transition: transform 0.3s ease;
         }
 
         .skill-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 5px 10px #B6F500;
         }
 
         .skill-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #FFFADC 0%, #98CD00 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -500,9 +464,11 @@ body.dark-theme {
             margin-bottom: 1rem;
             color: #333;
         }
-
+        .dark-theme .skill-bar{
+            background: white;
+        }
         .skill-bar {
-            background: #f0f0f0;
+            background: #FFFADC;
             height: 8px;
             border-radius: 4px;
             margin-top: 1rem;
@@ -511,15 +477,14 @@ body.dark-theme {
 
         .skill-progress {
             height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #b7e629 0%, #aacf3b 100%);
             border-radius: 4px;
             transition: width 2s ease;
         }
 
-        /* Portfolio Section */
         .portfolio {
             padding: 100px 0;
-            background: #f8f9fa;
+            background: #FFFADC;
         }
 
         .portfolio-filters {
@@ -531,8 +496,8 @@ body.dark-theme {
         }
 
         .filter-btn {
-            background: white;
-            border: 2px solid #e0e0e0;
+            background: #FFFADC;
+            border: 2px solid #f8eeb5;
             padding: 8px 20px;
             border-radius: 25px;
             cursor: pointer;
@@ -541,9 +506,9 @@ body.dark-theme {
 
         .filter-btn.active,
         .filter-btn:hover {
-            background: #0078ff;
-            color: white;
-            border-color: #0078ff;
+            background: #98CD00;
+            color: #FFFADC;
+            border-color: #A4DD00;
         }
 
         .portfolio-grid {
@@ -553,7 +518,7 @@ body.dark-theme {
         }
 
         .portfolio-item {
-            background: white;
+            background: #B6F500;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
@@ -564,15 +529,16 @@ body.dark-theme {
 
         .portfolio-item:hover {
             transform: translateY(-10px);
+            box-shadow: 0 5px 10px var(--primary-color-light);
         }
 
         .portfolio-img {
             height: 250px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #A4DD00 0%, #65c609 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: #FFFADC;
             font-size: 2rem;
             position: relative;
             overflow: hidden;
@@ -584,7 +550,7 @@ body.dark-theme {
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.95);
+            background: #FFFADC;
             backdrop-filter: blur(10px);
             transform: translateY(100%);
             transition: transform 0.3s ease;
@@ -615,7 +581,6 @@ body.dark-theme {
             transform: translateY(0);
         }
 
-        /* Hide overlay when content slides up */
         .portfolio-item:hover .portfolio-overlay {
             opacity: 0;
             transition-delay: 0.2s;
@@ -635,14 +600,14 @@ body.dark-theme {
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: #FFFADC;
             text-decoration: none;
             font-size: 1.2rem;
             transition: all 0.3s ease;
         }
 
         .portfolio-link:hover {
-            background: white;
+            background: #FFFADC;
             color: #333;
             transform: scale(1.1);
         }
@@ -653,22 +618,21 @@ body.dark-theme {
         }
 
         .portfolio-category {
-            color: #0078ff;
+            color: #A4DD00;
             font-size: 0.9rem;
             font-weight: 500;
         }
 
-        /* Contact Section */
         .contact {
             padding: 100px 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, #A4DD00 0%, #98CD00 100%);
+            color: #FFFADC;
         }
 .contact h2{
-    color: white;
+    color: #FFFADC;
 }
 .contact p{
-    color: white;
+    color: #FFFADC;
 }
         .contact-content {
             display: grid;
@@ -701,10 +665,19 @@ body.dark-theme {
         }
 
         .contact-form {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.259);
             padding: 2rem;
             border-radius: 15px;
             backdrop-filter: blur(10px);
+        }
+        .contact-info{
+            
+            padding: 1rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            display: flex;
+      justify-content: center;
+
         }
 
         .form-group {
@@ -717,7 +690,7 @@ body.dark-theme {
             padding: 12px;
             border: none;
             border-radius: 8px;
-            background: rgba(255, 255, 255, 0.9);
+            background: #FFFADC;
             font-size: 1rem;
         }
 
@@ -726,15 +699,18 @@ body.dark-theme {
             resize: vertical;
         }
 
-        /* Footer */
-        .footer {
-            background: #333;
+        .dark-theme .footer{
+            background: #666;
             color: white;
+        }
+        .footer {
+            background: #FFFADC;
+            color: #98CD00;
             text-align: center;
             padding: 2rem 0;
         }
 
-        /* Animations */
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -750,11 +726,8 @@ body.dark-theme {
             animation: fadeInUp 0.6s ease;
         }
 
-        /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
+         
 
             .hero h1 {
                 font-size: 2.5rem;
@@ -774,25 +747,204 @@ body.dark-theme {
                 font-size: 2rem;
             }
         }
+        
+        .menu-btn {
+    position: fixed;
+    z-index: 1200; 
+    right: 35px;
+    top: 35px;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+.menu-btn .btn-line {
+    width: 28px;
+    height: 3px;
+    margin: 0 0 5px 0;
+    background: #98CD00; 
+    border-radius: 2px;
+    transition: all 0.3s ease-out;
+}
+
+.dark-theme .menu-btn .btn-line {
+    width: 28px;
+    height: 3px;
+    margin: 0 0 5px 0;
+    background: var(--primary-color-light); 
+    border-radius: 2px;
+    transition: all 0.3s ease-out;
+}
+
+.menu-btn.close .btn-line:nth-child(1) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.menu-btn.close .btn-line:nth-child(3) {
+    opacity: 0;
+}
+
+.menu-btn.close .btn-line:nth-child(2) {
+    transform: rotate(45deg) translate(-12px,-12px);
+}
+
+
+.menu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    overflow: hidden;
+    z-index: 1100; 
+    background: rgba(255, 250, 220, 0.95); 
+    backdrop-filter: blur(10px); 
+    transition: all 0.3s ease-out;
+}
+
+.dark-theme .menu {
+    background: rgba(30, 30, 30, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.menu.show {
+    visibility: visible;
+}
+
+.menu-branding,
+.menu-nav {
+    background: transparent; 
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    overflow: hidden;
+    transform: translate3d(0, -100%, 0);
+    transition: all 0.3s ease-out;
+}
+
+.menu-nav.show,
+.menu-branding.show {
+    transform: translate3d(0, 0, 0);
+}
+
+.menu-nav {
+    
+    list-style: none;
+    padding: 0;
+    background:transparent; 
+}
+
+.dark-theme .menu-nav {
+    background: rgba(216, 64, 64, 0.1); 
+}
+
+.menu-nav .nav-item {
+    opacity: 0;
+    transform: translate3d(0, -20px, 0);
+    transition: all 0.3s ease-out;
+}
+
+.menu-nav .nav-item.show {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.menu-nav .nav-link {
+    display: inline-block;
+    position: relative;
+    font-size: 30px;
+    text-transform: uppercase;
+    padding: 1rem 0;
+    font-weight: 300;
+    color: #333; 
+    text-decoration: none;
+    transition: all 0.3s ease-out;
+}
+
+.dark-theme .menu-nav .nav-link {
+    color: #e0e0e0; 
+}
+
+.menu-nav .nav-link:hover {
+    color: #98CD00; 
+}
+
+.dark-theme .menu-nav .nav-link:hover {
+    color: #D84040; 
+}
+
+.menu-branding .portrait {
+    width: 250px;
+    height: 250px;
+    background-image: url('path/to/your/profile-image.jpg'); 
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    border: 3px solid #98CD00;
+}
+
+.dark-theme .menu-branding .portrait {
+    border-color: #D84040; 
+}
+
+
+.menu-nav .nav-item:nth-child(1) { transition-delay: 0.1s; }
+.menu-nav .nav-item:nth-child(2) { transition-delay: 0.2s; }
+.menu-nav .nav-item:nth-child(3) { transition-delay: 0.3s; }
+.menu-nav .nav-item:nth-child(4) { transition-delay: 0.4s; }
+.menu-nav .nav-item:nth-child(5) { transition-delay: 0.5s; }
+
+
+@media (max-width: 768px) {
+    .menu-container {
+        flex-direction: column;
+    }
+
+    .menu-nav, 
+    .menu-branding {
+        width: 100%;
+        height: 50%;
+    }
+}
+
+
     </style>
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="theme-toggle" id="themeToggle">
-            🌓
-        </div>
-        <div class="nav-container">
-            <a href="#" class="logo">Meh</a>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+<body><!-- Add this near the top of your <body> tag, before other content -->
+    <div id="themeToggle" class="theme-toggle">
+        🌓
+    </div>
+<div class="menu-btn">
+    <div class="btn-line"></div>
+    <div class="btn-line"></div>
+    <div class="btn-line"></div>
+</div>
+
+<div class="menu">
+    <div class="menu-branding">
+        <div class="portrait"></div>
+    </div>
+    <ul class="menu-nav">
+        <li class="nav-item">
+            <a href="#home" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+            <a href="#about" class="nav-link">About</a>
+        </li>
+        <li class="nav-item">
+            <a href="#skills" class="nav-link">Skills</a>
+        </li>
+        <li class="nav-item">
+            <a href="#portfolio" class="nav-link">Portfolio</a>
+        </li>
+        <li class="nav-item">
+            <a href="#contact" class="nav-link">Contact</a>
+        </li>
+    </ul>
+</div>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -912,7 +1064,7 @@ body.dark-theme {
                     </div>
                     <div class="portfolio-content">
                         <h4>E-commerce Platform</h4>
-                        <p class="portfolio-category">Web Application</p>
+                        <h6 class="portfolio-category">Web Application</h6>
                         <p>Modern e-commerce solution with advanced features and seamless user experience.</p>
                     </div>
                 </div>
@@ -928,7 +1080,7 @@ body.dark-theme {
                     </div>
                     <div class="portfolio-content">
                         <h4>Task Management App</h4>
-                        <p class="portfolio-category">Mobile App</p>
+                        <h6 class="portfolio-category">Mobile App</h6>
                         <p>Intuitive task management application with real-time collaboration features.</p>
                     </div>
                 </div>
@@ -944,7 +1096,7 @@ body.dark-theme {
                     </div>
                     <div class="portfolio-content">
                         <h4>Brand Identity Design</h4>
-                        <p class="portfolio-category">UI/UX Design</p>
+                        <h6 class="portfolio-category">UI/UX Design</h6>
                         <p>Complete brand identity package including logo, colors, and design guidelines.</p>
                     </div>
                 </div>
@@ -960,7 +1112,7 @@ body.dark-theme {
                     </div>
                     <div class="portfolio-content">
                         <h4>Portfolio Website</h4>
-                        <p class="portfolio-category">Web Development</p>
+                        <h6 class="portfolio-category">Web Development</h6>
                         <p>Responsive portfolio website with modern animations and interactive elements.</p>
                     </div>
                 </div>
@@ -976,7 +1128,7 @@ body.dark-theme {
                     </div>
                     <div class="portfolio-content">
                         <h4>Fitness Tracking App</h4>
-                        <p class="portfolio-category">Mobile App</p>
+                        <h6 class="portfolio-category">Mobile App</h6>
                         <p>Comprehensive fitness tracking application with social features and analytics.</p>
                     </div>
                 </div>
@@ -992,7 +1144,7 @@ body.dark-theme {
                     </div>
                     <div class="portfolio-content">
                         <h4>Dashboard Interface</h4>
-                        <p class="portfolio-category">UI Design</p>
+                        <h6 class="portfolio-category">UI Design</h6>
                         <p>Clean and intuitive dashboard interface with data visualization components.</p>
                     </div>
                 </div>
@@ -1004,7 +1156,7 @@ body.dark-theme {
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2 class="">Contact Me</h2>
+                <h2 class="">Liked my work?</h2>
                 <p class="section-subtitle">Let's work together on your next project</p>
             </div>
             <div class="contact-content">
@@ -1059,6 +1211,50 @@ body.dark-theme {
 
     <script>
         // Typewriter effect
+        // Menu Button Toggle
+const menuBtn = document.querySelector('.menu-btn');
+const menu = document.querySelector('.menu');
+const menuNav = document.querySelector('.menu-nav');
+const menuBranding = document.querySelector('.menu-branding');
+const navItems = document.querySelectorAll('.nav-item');
+
+let showMenu = false;
+
+menuBtn.addEventListener('click', toggleMenu);
+
+function toggleMenu() {
+    if (!showMenu) {
+        menuBtn.classList.add('close');
+        menu.classList.add('show');
+        menuNav.classList.add('show');
+        menuBranding.classList.add('show');
+        
+        // Stagger nav items
+        navItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.classList.add('show');
+            }, 100 * index);
+        });
+
+        showMenu = true;
+    } else {
+        menuBtn.classList.remove('close');
+        menu.classList.remove('show');
+        menuNav.classList.remove('show');
+        menuBranding.classList.remove('show');
+        
+        navItems.forEach(item => {
+            item.classList.remove('show');
+        });
+
+        showMenu = false;
+    }
+}
+
+// Close menu when nav links are clicked
+navItems.forEach(item => {
+    item.querySelector('.nav-link').addEventListener('click', toggleMenu);
+});
         const texts = ['Full Stack Developer', 'UI/UX Designer', 'Creative Problem Solver', 'Tech Enthusiast'];
         let textIndex = 0;
         let charIndex = 0;
@@ -1199,6 +1395,7 @@ themeToggle.addEventListener('click', () => {
         localStorage.setItem('theme', 'dark-theme');
     }
 });
+
     </script>
 </body>
 </html>
