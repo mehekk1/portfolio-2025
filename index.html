@@ -223,11 +223,6 @@ body.dark-theme {
     background: #8E1616;
 }
 
-.dark-theme .contact-form {
-
-    background: #8E1616;
-    backdrop-filter: blur(10px);
-}
 .dark-theme .contact h2 {
     color: #bc1818;
     
@@ -529,6 +524,10 @@ body.dark-theme {
 
         .portfolio-item:hover {
             transform: translateY(-10px);
+            box-shadow: 0 5px 10px #B6F500;
+        }
+        .dark-theme .portfolio-item:hover {
+            transform: translateY(-10px);
             box-shadow: 0 5px 10px var(--primary-color-light);
         }
 
@@ -634,51 +633,55 @@ body.dark-theme {
 .contact p{
     color: #FFFADC;
 }
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-top: 3rem;
-        }
 
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
+.contact-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px; 
+}
 
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 300px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
 
-        .contact-form {
-            background: rgba(255, 255, 255, 0.259);
-            padding: 2rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-        }
-        .contact-info{
-            
-            padding: 1rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            display: flex;
-      justify-content: center;
+.contact-item:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.2);
+}
 
-        }
+.contact-item h4 {
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.contact-item p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.contact-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
 
         .form-group {
             margin-bottom: 1.5rem;
@@ -738,11 +741,6 @@ body.dark-theme {
                 gap: 2rem;
             }
 
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
             .section-title h2 {
                 font-size: 2rem;
             }
@@ -777,7 +775,13 @@ body.dark-theme {
 
 .menu-btn.close .btn-line:nth-child(1) {
     transform: rotate(-45deg) translate(6px, -6px);
+    background: black;
 }
+.dark-theme .menu-btn.close .btn-line:nth-child(1) {
+    transform: rotate(-45deg) translate(6px, -6px);
+    background: var(--primary-color-light); 
+}
+
 
 .menu-btn.close .btn-line:nth-child(3) {
     opacity: 0;
@@ -785,8 +789,13 @@ body.dark-theme {
 
 .menu-btn.close .btn-line:nth-child(2) {
     transform: rotate(45deg) translate(-12px,-12px);
+    background: black;
 }
 
+.dark-theme .menu-btn.close .btn-line:nth-child(2) {
+    transform: rotate(45deg) translate(-12px,-12px);
+    background: var(--primary-color-light); 
+}
 
 .menu {
     position: fixed;
@@ -796,9 +805,10 @@ body.dark-theme {
     visibility: hidden;
     overflow: hidden;
     z-index: 1100; 
-    background: rgba(255, 250, 220, 0.95); 
+    background: #96cd009a;  
+    opacity: 90%;
     backdrop-filter: blur(10px); 
-    transition: all 0.3s ease-out;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .dark-theme .menu {
@@ -806,23 +816,19 @@ body.dark-theme {
     backdrop-filter: blur(10px);
 }
 
-.menu.show {
-    visibility: visible;
-}
-
 .menu-branding,
 .menu-nav {
-    background: transparent; 
-    width: 50%;
-    height: 100vh;
+    position: absolute;
+    width: 100%;
+    height: 50%;
     display: flex;
-    flex-flow: column wrap;
     align-items: center;
     justify-content: center;
-    float: left;
-    overflow: hidden;
-    transform: translate3d(0, -100%, 0);
-    transition: all 0.3s ease-out;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.menu.show {
+    visibility: visible;
 }
 
 .menu-nav.show,
@@ -830,17 +836,12 @@ body.dark-theme {
     transform: translate3d(0, 0, 0);
 }
 
-.menu-nav {
-    
-    list-style: none;
-    padding: 0;
-    background:transparent; 
-}
-
 .dark-theme .menu-nav {
     background: rgba(216, 64, 64, 0.1); 
 }
-
+.nav-item{
+    padding: 2.5%;
+}
 .menu-nav .nav-item {
     opacity: 0;
     transform: translate3d(0, -20px, 0);
@@ -869,27 +870,64 @@ body.dark-theme {
 }
 
 .menu-nav .nav-link:hover {
-    color: #98CD00; 
+    color: #000000; 
 }
 
 .dark-theme .menu-nav .nav-link:hover {
     color: #D84040; 
 }
+.menu.show .menu-nav .nav-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+.menu-nav .nav-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
 
 .menu-branding .portrait {
     width: 250px;
     height: 250px;
-    background-image: url('path/to/your/profile-image.jpg'); 
-    background-position: center;
-    background-size: cover;
     border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
     border: 3px solid #98CD00;
+    transform: scale(0.7);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s;
+}
+.menu.show .menu-nav {
+    bottom: 0; 
+}
+
+.menu.show .menu-branding {
+    top: 0; 
+}
+.menu-nav {
+    bottom: -100%;
+    background: transparent;
+}
+
+.menu-branding {
+    top: -100%;
+    background: transparent;
+}
+
+
+.menu-branding .portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.menu.show .menu-branding .portrait {
+    transform: scale(1); 
+    opacity: 1;
 }
 
 .dark-theme .menu-branding .portrait {
-    border-color: #D84040; 
+    border-color: #D84040;
 }
-
 
 .menu-nav .nav-item:nth-child(1) { transition-delay: 0.1s; }
 .menu-nav .nav-item:nth-child(2) { transition-delay: 0.2s; }
@@ -897,23 +935,79 @@ body.dark-theme {
 .menu-nav .nav-item:nth-child(4) { transition-delay: 0.4s; }
 .menu-nav .nav-item:nth-child(5) { transition-delay: 0.5s; }
 
+@media (max-width: 480px) {
+    .menu-branding .portrait {
+        width: 150px;
+        height: 150px;
+    }
 
+    .menu-nav .nav-link {
+        font-size: 20px;
+    }
+}
 @media (max-width: 768px) {
-    .menu-container {
+    .menu {
+        display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
-    .menu-nav, 
-    .menu-branding {
+    .menu-branding,
+    .menu-nav {
         width: 100%;
-        height: 50%;
+        position: relative;
+        left: 0;
+        right: 0;
     }
+
+    .menu-branding {
+        height: auto;
+    }
+
+    .menu-nav {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu-branding .portrait {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 20px;
+    }
+
+    .menu-nav .nav-item {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .menu-nav .nav-link {
+        font-size: 24px;
+        padding: 3px;
+        display: inline-block;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-item {
+        width: 100%;
+        max-width: 350px;
+        margin-bottom: 1rem;
+    }
+}
+ul{
+    list-style: none;
 }
 
 
     </style>
 </head>
-<body><!-- Add this near the top of your <body> tag, before other content -->
+<body>
     <div id="themeToggle" class="theme-toggle">
         🌓
     </div>
@@ -925,7 +1019,9 @@ body.dark-theme {
 
 <div class="menu">
     <div class="menu-branding">
-        <div class="portrait"></div>
+        <div class="portrait">
+            <img src="mehek.jpeg" alt="Mehak Mahajan">
+        </div>
     </div>
     <ul class="menu-nav">
         <li class="nav-item">
@@ -946,7 +1042,6 @@ body.dark-theme {
     </ul>
 </div>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>I am Mehak Mahajan</h1>
@@ -957,7 +1052,6 @@ body.dark-theme {
         </div>
     </section>
 
-    <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
             <div class="section-title">
@@ -970,7 +1064,7 @@ body.dark-theme {
                     <div class="profile-info">
                         <h3>Mehak Mahajan</h3>
                         <ul class="profile-details">
-                            <li><strong>Profile:</strong> Full Stack Developer</li>
+                            <li><strong>Profile:</strong> FrontEnd Developer</li>
                             <li><strong>Email:</strong> mehekk17work@gmail.com</li>
                             <li><strong>Phone:</strong> +91 90411 94889 </li>
                             <li><strong>Location:</strong> Hyderabad, India</li>
@@ -986,7 +1080,6 @@ body.dark-theme {
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section class="skills" id="skills">
         <div class="container">
             <div class="section-title">
@@ -1038,7 +1131,6 @@ body.dark-theme {
         </div>
     </section>
 
-    <!-- Portfolio Section -->
     <section class="portfolio" id="portfolio">
         <div class="container">
             <div class="section-title">
@@ -1152,57 +1244,32 @@ body.dark-theme {
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-title">
                 <h2 class="">Liked my work?</h2>
                 <p class="section-subtitle">Let's work together on your next project</p>
             </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div>
-                            <h4>Address</h4>
-                            <p>BITS Pilani, Hyderabad, Telangana, India</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📞</div>
-                        <div>
-                            <h4>Call Me</h4>
-                            <p>+91 90411 94889</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">✉️</div>
-                        <div>
-                            <h4>Email Me</h4>
-                            <p>mehekk17work@gmail.com</p>
-                        </div>
-                    </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h4>Address</h4>
+                        <p>BITS Pilani, Hyderabad, Telangana, India</p>
                 </div>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Subject" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary">Send Message</button>
-                </form>
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <h4>Call Me</h4>
+                        <p>+91 90411 94889</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <h4>Email Me</h4>
+                        <p>mehekk17work@gmail.com</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p> Learning a little more everyday :) </p>
@@ -1210,9 +1277,7 @@ body.dark-theme {
     </footer>
 
     <script>
-        // Typewriter effect
-        // Menu Button Toggle
-const menuBtn = document.querySelector('.menu-btn');
+        const menuBtn = document.querySelector('.menu-btn');
 const menu = document.querySelector('.menu');
 const menuNav = document.querySelector('.menu-nav');
 const menuBranding = document.querySelector('.menu-branding');
@@ -1220,42 +1285,34 @@ const navItems = document.querySelectorAll('.nav-item');
 
 let showMenu = false;
 
-menuBtn.addEventListener('click', toggleMenu);
-
 function toggleMenu() {
     if (!showMenu) {
         menuBtn.classList.add('close');
         menu.classList.add('show');
-        menuNav.classList.add('show');
-        menuBranding.classList.add('show');
         
-        // Stagger nav items
         navItems.forEach((item, index) => {
-            setTimeout(() => {
-                item.classList.add('show');
-            }, 100 * index);
+            item.style.transitionDelay = `${index * 0.1}s`;
         });
 
         showMenu = true;
     } else {
         menuBtn.classList.remove('close');
         menu.classList.remove('show');
-        menuNav.classList.remove('show');
-        menuBranding.classList.remove('show');
         
         navItems.forEach(item => {
-            item.classList.remove('show');
+            item.style.transitionDelay = '0s';
         });
 
         showMenu = false;
     }
 }
 
-// Close menu when nav links are clicked
+menuBtn.addEventListener('click', toggleMenu);
+
 navItems.forEach(item => {
     item.querySelector('.nav-link').addEventListener('click', toggleMenu);
 });
-        const texts = ['Full Stack Developer', 'UI/UX Designer', 'Creative Problem Solver', 'Tech Enthusiast'];
+        const texts = ['FrontEnd Developer', 'UI/UX Designer', 'Creative Problem Solver', 'Tech Enthusiast'];
         let textIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -1275,7 +1332,7 @@ navItems.forEach(item => {
             let typeSpeed = isDeleting ? 50 : 100;
 
             if (!isDeleting && charIndex === currentText.length) {
-                typeSpeed = 2000; // Pause at end
+                typeSpeed = 2000; 
                 isDeleting = true;
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
@@ -1285,10 +1342,7 @@ navItems.forEach(item => {
             setTimeout(typeWriter, typeSpeed);
         }
 
-        // Start typewriter effect
         typeWriter();
-
-        // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
@@ -1298,7 +1352,6 @@ navItems.forEach(item => {
             }
         });
 
-        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1312,15 +1365,12 @@ navItems.forEach(item => {
             });
         });
 
-        // Portfolio filter functionality
         const filterBtns = document.querySelectorAll('.filter-btn');
         const portfolioItems = document.querySelectorAll('.portfolio-item');
 
         filterBtns.forEach(btn => {
             btn.addEventListener('click', function() {
-                // Remove active class from all buttons
                 filterBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
                 this.classList.add('active');
 
                 const filter = this.getAttribute('data-filter');
@@ -1336,14 +1386,7 @@ navItems.forEach(item => {
             });
         });
 
-        // Form submission
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            this.reset();
-        });
 
-        // Animate skill bars on scroll
         const observerOptions = {
             threshold: 0.7,
             rootMargin: '0px 0px -100px 0px'
@@ -1362,7 +1405,6 @@ navItems.forEach(item => {
 
         observer.observe(document.querySelector('.skills'));
 
-        // Add fade-in animation to sections on scroll
         const sections = document.querySelectorAll('section');
         const sectionObserver = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
@@ -1376,23 +1418,31 @@ navItems.forEach(item => {
             sectionObserver.observe(section);
         });
 
-        // Theme Toggle
-const themeToggle = document.getElementById('themeToggle');
-const body = document.body;
+document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('click', function(event) {
+        const themeToggle = event.target.closest('#themeToggle');
+        if (themeToggle) {
+            const body = document.body;
 
-// Check for saved theme preference
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-    body.classList.add(savedTheme);
-}
+            body.classList.toggle('dark-theme');
+            
+            if (body.classList.contains('dark-theme')) {
+                localStorage.setItem('theme', 'dark-theme');
+                themeToggle.textContent = '🌞'; 
+            } else {
+                localStorage.removeItem('theme');
+                themeToggle.textContent = '🌙';
+            }
+        }
+    });
 
-themeToggle.addEventListener('click', () => {
-    if (body.classList.contains('dark-theme')) {
-        body.classList.remove('dark-theme');
-        localStorage.removeItem('theme');
-    } else {
-        body.classList.add('dark-theme');
-        localStorage.setItem('theme', 'dark-theme');
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.body.classList.add('dark-theme');
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.textContent = '🌞';
+        }
     }
 });
 
